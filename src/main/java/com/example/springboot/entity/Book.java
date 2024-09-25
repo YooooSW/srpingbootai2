@@ -23,8 +23,7 @@ public class Book {
     private String author;
     private int page;
     // @OneToMany : LAZY 기본(지연로딩)
-    // mappedBy : 연관관계의 주인이 내가 아니다
+    // mappedBy : 연관관계의 주인이 내가 아니다.
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Review> reviews;
-
+    private List<Review> reviews; // null
 }

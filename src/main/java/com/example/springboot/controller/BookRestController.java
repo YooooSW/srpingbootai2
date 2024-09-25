@@ -25,11 +25,28 @@ public class BookRestController {
         List<BookDTO> books=bookService.getAllBooksDTO();
         return books; //JSON(MessageConverter:순환참조문제X)
     }
-
+    
+    // 등록
     @PostMapping("/book")
     public BookDTO register(@RequestBody BookDTO dto){
-
-        return null;
+        Book book=new Book(); // Table
+        BookDTO view=new BookDTO();
+        try{
+            book.setTitle(dto.getTitle());
+            book.setPrice(dto.getPrice());
+            book.setAuthor(dto.getAuthor());
+            book.setPage(dto.getPage());
+            bookService.save(book); // 등록
+            // BookDTO(응답용)를 사용
+            view.setId(book.getId());
+            view.setTitle(book.getTitle());
+            view.setPrice(book.getPrice());
+            view.setAuthor(book.getAuthor());
+            view.setPage(book.getPage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return view;
     }
 
 

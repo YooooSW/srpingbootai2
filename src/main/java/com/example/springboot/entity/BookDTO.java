@@ -1,10 +1,10 @@
 package com.example.springboot.entity;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-// @Entity Data -> DTO 변환
-public class BookDTO {
+// @Entity Data--(변환작업필요?)--->DTO
+public class BookDTO { // 응답용, 요청용(BookPayloadDTO)
     private Long id;
     private String title;
     private int price;
     private String author;
     private int page;
-    private List<ReviewDTO> reviews;
+    private List<ReviewDTO> reviews; // null
 }
